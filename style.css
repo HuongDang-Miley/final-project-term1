@@ -1,0 +1,55 @@
+body {
+    background-color: blue;
+    background-image: url("./assets/game-start-background.jpg");
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+}
+iframe {
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    height: 24px;
+    width: 24px;
+}
+
+section {
+    display: grid;
+    margin-top: 50px;
+}
+
+#logo {
+    margin: 24px;
+}
+
+button#start-btn {
+    font-size: 32px;
+    background: #010101;
+    border: 3px solid #979797;
+    border-radius: 28px;
+    height: 56px;
+    color: #FFD23A;
+    text-align: center;
+    margin: 24px;
+}
+
+#start-btn:hover {
+    background-color: #FFD23A;
+    border: 3px solid #FFD23A;
+    color: #010101;
+}
+
+input#enter-name {
+    height: 56px;
+    font-size: 32px;
+    background: #D8D8D8;
+    border: 1px solid #979797;
+    color: #000000;
+    text-align: center;
+    margin: 24px;
+}
+#enter-name:hover {
+    border: 2px solid #0091FF;
+}
