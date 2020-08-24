@@ -1,38 +1,32 @@
 body {
-    background-color: blue;
-    background-image: url("./assets/game-start-background.jpg");
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+    background-image: url("./assets/game-background.jpg");
+    background-position: center; 
+    background-size: 100% 100%;
+    background-size: cover;
     font-family: 'Inter', sans-serif;
-}
-iframe {
-    position: absolute;
-    top: 32px;
-    left: 32px;
-    height: 24px;
-    width: 24px;
+    min-height: 100vh;
 }
 
-section {
+#start-background {
     display: grid;
-    margin-top: 50px;
+    grid-template-columns: 1ft;
+    justify-items: center ;
 }
 
-#logo {
+img {
+    width: 300px;
     margin: 24px;
 }
 
-button#start-btn {
-    font-size: 32px;
+#start-btn {
+    font-size: 24px;
+    width: 300px;
+    height: 56px;
+    margin: 16px;
     background: #010101;
     border: 3px solid #979797;
     border-radius: 28px;
-    height: 56px;
     color: #FFD23A;
-    text-align: center;
-    margin: 24px;
 }
 
 #start-btn:hover {
@@ -41,15 +35,22 @@ button#start-btn {
     color: #010101;
 }
 
-input#enter-name {
+input {
+    font-size: 24px;
+    width: 300px;
     height: 56px;
-    font-size: 32px;
+    margin: 16px;
+    padding: 0px;
     background: #D8D8D8;
     border: 1px solid #979797;
     color: #000000;
     text-align: center;
-    margin: 24px;
 }
-#enter-name:hover {
+
+input:hover {
     border: 2px solid #0091FF;
+}
+
+iframe {
+    height: 40px;
 }

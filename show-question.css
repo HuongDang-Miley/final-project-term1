@@ -1,0 +1,339 @@
+
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-image: url(./assets/game-background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: grid;
+}
+
+
+#main {
+    width: 70%;
+    height: 100%;
+    margin: 50px auto;
+}
+
+#question-part {
+    display: grid;
+    align-items: center;
+    grid-template-areas: "qus qus" "anA anB" "anC anD";
+}
+
+.text-field {
+    color: #D8D8D8;
+    background-color: brown;
+    padding: 16px 16px 16px 64px;
+    border-radius: 100px;
+    border: 3px solid #979797;
+    background-color: #010101;
+    font-size: 24px;
+}
+
+.text-field:hover {
+    border: 3px solid #0091FF;
+}
+
+#question {
+    grid-area: qus;
+    padding: 32px;
+    border-radius: 0px;
+    margin: 16px 0px 16px 0px;
+}
+
+#answer-a {
+    grid-area: anA;
+    margin: 0px 0px 8px 0px;
+}
+
+#answer-b {
+    grid-area: anB;
+    margin: 0px 0px 8px 8px;
+}
+
+#answer-c {
+    grid-area: anC;
+    margin: 8px 0px 16px 0px;
+}
+
+#answer-d {
+    grid-area: anD;
+    margin: 8px 0px 16px 8px;
+}
+
+.answer-option {
+    color: #FFD23A;
+    font-size: 500;
+}
+
+#indicator-part {
+    /* background-color: grey; */
+    margin-bottom: 16px;
+    display: grid;
+    grid-template-areas: "mus ind mon";
+    justify-items: center;
+}
+
+iframe {
+    height: 40px;
+    width: 50px;
+    grid-area: mus;
+    justify-self: start;
+}
+
+#money-list {
+    padding-right: 12px;
+    color: #D8D8D8;
+    background-color: #010101;
+    border: 1px solid #F88007;
+    grid-area: mon;
+    justify-self: end;
+}
+
+#wrapper {
+    grid-area: ind;
+    /* background-color: tomato; */
+    display: grid;
+    grid-template-areas: "time" "hint";
+}
+
+#time {
+    grid-area: time;
+    align-self: start;
+    justify-self: center;
+    background-color: thistle;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    border: 5px solid white;
+    display: grid;
+    grid-template-areas: "cnt";
+    place-items: center center;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#count-down {
+    grid-area: cnt;
+    color: #DF7306;
+    font-size: 50px;
+}
+
+#hint-options {
+    align-self: end;
+    display: grid;
+    grid-template-areas: "fif qut nxt";
+    justify-items: center;
+}
+
+.hint {
+    font-size: 24px;
+    width: 83px;
+    height: 83px;
+    border: 2px solid #F88007;
+    background-color: black;
+    border-radius: 100%;
+    color: white;
+    margin: 0px 16px 0px 16px;
+}
+
+.hint:hover {
+    border: 2px solid yellow;
+}
+
+.fifty-fifty {
+    grid-row: fif;
+}
+
+.three-times {
+    position: relative;
+    top: -40px;
+}
+
+.quit {
+    grid-row: qut;
+}
+
+.next {
+    grid-row: nxt;
+    border: 2px solid yellow;
+}
+
+.bt-inactive {
+    color: #555555;
+    border: 2px solid #555555;
+}
+
+#popup-wrapper {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center center;
+}
+
+.hidden {
+opacity:0
+}
+
+
+#popup {
+    width: 300px;
+    background-color: #010101;
+    border: 3px solid #979797;
+    color: #D8D8D8;
+    display: grid;
+    grid-template-areas: "par" "rnk" "pla";
+    place-items: center center;
+    padding: 60px 12px 60px 12px;
+}
+
+button {
+    font-size: 1.5rem;
+    width: 300px;
+    height: 56px;
+    background: #010101;
+    border: 3px solid #979797;
+    border-radius: 28px;
+    color: #FFD23A;
+}
+
+button:hover{
+    background-color: #FFD23A;
+    color: black;
+    border: 2px solid #FFD23A;
+}
+
+p {
+    grid-area: par;
+    color: #D8D8D8;
+    font-size: 1.5rem;
+    
+    
+}
+
+.see-rank {
+    grid-area: rnk;
+    margin-bottom: 32px;
+}
+
+.play-again {
+    grid-area: pla;
+    margin-bottom: 32px;
+}
+
+@media (max-width: 600px) {
+
+    #main {
+        width: 100%;
+        margin: 0px auto;
+    }
+    #question-part {
+        display: grid;
+        align-items: center;
+        grid-template-areas: "qus" "anA" "anB" "anC" "anD";
+    }
+    .text-field {
+        font-size: 20px;
+        padding: 12px;
+        padding-left: 32px;
+        border: 2px solid #979797;
+    }
+    #question {
+        grid-area: qus;
+        padding: 8px;
+        padding-left: 32px;
+        border-radius: 0px;
+        margin-bottom: 12px;
+    }
+    #answer-a {
+        grid-area: anA;
+        margin: 0px 0px 8px 0px;
+    }
+    #answer-b {
+        grid-area: anB;
+        margin: 0px 0px 8px 0px;
+    }
+    #answer-c {
+        grid-area: anC;
+        margin: 0px 0px 8px 0px;
+    }
+    #answer-d {
+        grid-area: anD;
+        margin: 0px 0px 8px 0px;
+    }
+    #indicator-part {
+        margin: 32px 0px 8px 0px;
+        display: grid;
+        grid-template-areas: "mus mon" "ind mon";
+        justify-items: center;
+    }
+    #money-list {
+        /* padding-right: 12px; */
+        color: #D8D8D8;
+        background-color: #010101;
+        border: 1px solid #F88007;
+        grid-area: mon;
+        font-size: 12px;
+        margin: 0px;
+        padding: 0px 10px 0px 0px;
+        justify-self: end;
+    }
+    ol {
+        padding-inline-start: 30px;
+    }
+    #wrapper {
+        justify-self: start;
+        grid-template-areas: "hint time";
+    }
+    #hint-options {
+        margin-top: 8px;
+        margin-right: 12px;
+        grid-template-areas: "fif" "qut" "nxt";
+    }
+    .hint {
+        font-size: 14px;
+        text-align: center;
+        width: 56px;
+        height: 56px;
+        border: 2px solid #F88007;
+        background-color: black;
+        border-radius: 100%;
+        color: white;
+        margin: 0px;
+    }
+    .fifty-fifty {
+        margin-bottom: 16px;
+    }
+    .three-times {
+        top: -20px;
+        right: -8px;
+    }
+    .quit {
+        margin-bottom: 16px;
+    }
+    #time {
+        width: 100px;
+        height: 100px;
+        align-self: center;
+        border: 3px solid #F88007;
+    }
+    #count-down {
+        font-size: 24px;
+    }
+    iframe {
+        width: 56px;
+        height: 24px;
+        margin: 0px;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 800px) {
+    #main {
+        width: 100%;
+    }
+}
