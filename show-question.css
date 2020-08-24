@@ -29,6 +29,26 @@ body {
     font-size: 24px;
 }
 
+.choice-clicked {
+    background-color: yellow;
+    color: black;
+    border: #A47F01 solid 3px;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.show-correct-answer {
+    font-weight: 600;
+    font-size: 1.5rem;
+    background-color: greenyellow;
+    color: black;
+    border:#FFD23A solid 3px;
+}
+
+.deactivate-btn {
+    pointer-events: none;
+}
+
 .choice:hover {
     border: 3px solid #0091FF;
     cursor: pointer;
@@ -40,6 +60,7 @@ body {
     border-radius: 0px;
     margin: 16px 0px 16px 0px;
 }
+
 
 #answer-a {
     grid-area: anA;
