@@ -7,7 +7,7 @@ body {
     min-height: 100vh;
 }
 
-#start-background {
+#background {
     display: grid;
     grid-template-columns: 1ft;
     justify-items: center ;
@@ -18,7 +18,7 @@ img {
     margin: 24px;
 }
 
-#start-btn {
+button {
     font-size: 24px;
     width: 300px;
     height: 56px;
@@ -29,7 +29,7 @@ img {
     color: #FFD23A;
 }
 
-#start-btn:hover {
+button:hover {
     background-color: #FFD23A;
     border: 3px solid #FFD23A;
     color: #010101;
@@ -53,4 +53,44 @@ input:hover {
 
 iframe {
     height: 40px;
+    width: 50px;
+    position: absolute;
+    top: 32px;
+    left: 32px;
+}
+
+.screen-wrapper {
+    display: grid;
+    grid-template-columns: 1ft;
+    justify-items: center;;
+    margin-top: 50px;
+}
+.black-box-wrapper {
+    padding: 10px;
+    background-color: #010101;
+    border: 1px solid #F88007;
+    width: 320px;
+    margin-bottom: 32px;
+    display: grid;
+    grid-template-columns: 1ft;
+    justify-items: center;
+}
+
+ol {
+    padding-inline-start: 20px;
+}
+
+p, li {
+    color: #F88007;
+    margin: 16px;
+    font-size: 1.5rem;
+    font-weight: 600px;
+}
+
+
+.rank-1 {
+    color: yellow;
+}
+.rank-2 {
+    color: white;
 }

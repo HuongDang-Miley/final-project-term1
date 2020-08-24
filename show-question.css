@@ -1,5 +1,3 @@
-
-
 body {
     font-family: 'Inter', sans-serif;
     background-image: url(./assets/game-background.jpg);
@@ -8,7 +6,6 @@ body {
     background-position: center;
     display: grid;
 }
-
 
 #main {
     width: 70%;
@@ -89,7 +86,20 @@ iframe {
     background-color: #010101;
     border: 1px solid #F88007;
     grid-area: mon;
-    justify-self: end;
+    justify-self: center;
+}
+
+ol {
+    list-style-position: inside;
+    padding-inline-start: 12px;
+}
+
+.milestone {
+    color: #F88007;
+}
+
+.pass-question {
+    border: yellow 1px solid;
 }
 
 #wrapper {
@@ -148,6 +158,10 @@ iframe {
 
 .three-times {
     position: relative;
+    background-color: black;
+    padding: 4px;
+    border: 1px solid #F88007;
+    border-radius: 100%;
     top: -40px;
 }
 
@@ -166,30 +180,27 @@ iframe {
 }
 
 #popup-wrapper {
-    position: absolute;
+    position: fixed;
     top: 0px;
     left: 0px;
-    background-color: rgba(0, 0, 0, 0.8);
+    right: 0px;
+    bottom: 0px;
     width: 100%;
     height: 100%;
-    display: grid;
-    place-items: center center;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.8);
 }
-
-.hidden {
-opacity:0
-}
-
 
 #popup {
     width: 300px;
+    margin: 100px auto;
     background-color: #010101;
     border: 3px solid #979797;
     color: #D8D8D8;
     display: grid;
     grid-template-areas: "par" "rnk" "pla";
-    place-items: center center;
-    padding: 60px 12px 60px 12px;
+    justify-items: center;
+    padding: 60px 8px 60px 8px;
 }
 
 button {
@@ -202,18 +213,17 @@ button {
     color: #FFD23A;
 }
 
-button:hover{
+.play-again:hover, .see-rank:hover {
     background-color: #FFD23A;
-    color: black;
-    border: 2px solid #FFD23A;
+    border: 3px solid #FFD23A;
+    color: #010101;
 }
 
 p {
     grid-area: par;
     color: #D8D8D8;
-    font-size: 1.5rem;
-    
-    
+    font-size: 1.4rem;
+    margin-bottom: 64px;
 }
 
 .see-rank {
@@ -227,7 +237,6 @@ p {
 }
 
 @media (max-width: 600px) {
-
     #main {
         width: 100%;
         margin: 0px auto;
@@ -282,9 +291,6 @@ p {
         margin: 0px;
         padding: 0px 10px 0px 0px;
         justify-self: end;
-    }
-    ol {
-        padding-inline-start: 30px;
     }
     #wrapper {
         justify-self: start;
