@@ -73,11 +73,20 @@ body {
     justify-items: center;
 }
 
+.music-wrapper{
+    grid-area: mus;
+    width: 144px;
+    justify-self: start;
+
+}
+
 iframe {
+    position: relative;
+    top: 0;
+    left: 0;
     height: 40px;
     width: 50px;
-    grid-area: mus;
-    justify-self: start;
+    
 }
 
 #money-list {
@@ -86,7 +95,7 @@ iframe {
     background-color: #010101;
     border: 1px solid #F88007;
     grid-area: mon;
-    justify-self: center;
+    justify-self: end;
 }
 
 ol {
@@ -103,8 +112,8 @@ ol {
 }
 
 #wrapper {
+    width: 340px;
     grid-area: ind;
-    /* background-color: tomato; */
     display: grid;
     grid-template-areas: "time" "hint";
 }
@@ -282,16 +291,21 @@ p {
         justify-items: center;
     }
     #money-list {
-        /* padding-right: 12px; */
+        
+        
+        font-size: 12px;
+        /* margin: 0px; */
+        padding: 0px 10px 0px 0px;
+    }
+
+    /* #money-list {
+        padding-right: 12px;
         color: #D8D8D8;
         background-color: #010101;
         border: 1px solid #F88007;
         grid-area: mon;
-        font-size: 12px;
-        margin: 0px;
-        padding: 0px 10px 0px 0px;
         justify-self: end;
-    }
+    } */
     #wrapper {
         justify-self: start;
         grid-template-areas: "hint time";
