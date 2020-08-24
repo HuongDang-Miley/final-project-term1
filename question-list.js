@@ -5,11 +5,8 @@ const questions =  [
         answer: ["1st", "2nd", "3rd", "None"]
     },
     {
-        "question": "How many months have 28 days?",
-        "correctAnswer": "All of them",
-        "choice1": "One",
-        "choice2": "Two",
-        "choice3": "Depends on if there’s a leap of year or not"
+        question: "How many months have 28 days?",
+        answer: ["All of them", "One", "Two", "Depends on if there’s a leap of year or no"]
     },
     {
         "question": "The answer is really big",
