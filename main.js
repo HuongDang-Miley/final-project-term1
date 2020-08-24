@@ -1,7 +1,6 @@
-// // convert json to array
 // const fs = require('fs')
-// const data = fs.readFileSync('./questions.json', 'utf8')
-// const obj = JSON.parse(data)
+
+
 
 const questions = [
     {
@@ -27,24 +26,26 @@ const questions = [
     }
 ]
 
-
-// const prizeArr = [50, 100, 200, 300, 500, 1000, 2000, 4000, 8000, 16000, 32000, 65000, 125000, 500000, 1000000000]
 const prizeArr = [1000000000, 500000, 125000, 65000, 32000, 16000, 8000, 4000, 2000, 1000, 500, 300, 200, 100, 50]
 
 
+
+// Query elements
+const questText = document.querySelector("#question")
+const answerA = document.querySelector("#answer-a")
+const answerB = document.querySelector("#answer-b")
+const answerC = document.querySelector("#answer-c")
+const answerD = document.querySelector("#answer-d")
+// questText.innerText = obj.questions[1].question 
+
+// Use build-in array
 const question1 = questions[1].question
 const correctChoice = questions[1].correctAnswer
 const choice1 = questions[1].choice1
 const choice2 = questions[1].choice2
 const choice3 = questions[1].choice3
 
-
-
-const questText = document.querySelector("#question")
-const answerA = document.querySelector("#answer-a")
-const answerB = document.querySelector("#answer-b")
-const answerC = document.querySelector("#answer-c")
-const answerD = document.querySelector("#answer-d")
+// Connect the DOM
 questText.innerText = question1
 answerA.innerText = correctChoice;
 answerA.classList.add('correct-answer')
@@ -52,13 +53,20 @@ answerB.innerText = choice1;
 answerC.innerText = choice2;
 answerD.innerText = choice3;
 
+// convert json to array
+
+const data = fs.readFileSync('./questions.json', 'utf8')
+const obj = JSON.parse(data)
+
+questText.innerText = obj.questions[1].question
+
 const prizeList = document.querySelectorAll('li')
 const choices = document.querySelectorAll('.choice')
-
 
 let questionPass = 15
 let currentPrize = 0
 
+// Run through choice of answers. If user click on any of them, add a class to change the button.
 choices.forEach(function (choice) {
     choice.addEventListener('click', function (event) {
         event.target.classList.add("choice-clicked")
@@ -104,8 +112,8 @@ choices.forEach(function (choice) {
 
 
 
-console.log({ prize })
-console.log({ questionPass })
+// console.log({ prize })
+// console.log({ questionPass })
 
 
 
