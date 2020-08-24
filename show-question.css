@@ -29,8 +29,9 @@ body {
     font-size: 24px;
 }
 
-.text-field:hover {
+.choice:hover {
     border: 3px solid #0091FF;
+    cursor: pointer;
 }
 
 #question {
@@ -159,6 +160,7 @@ ol {
 
 .hint:hover {
     border: 2px solid yellow;
+    cursor: pointer;
 }
 
 .fifty-fifty {
@@ -178,9 +180,18 @@ ol {
     grid-row: qut;
 }
 
+.quit:hover{
+    border: 2px solid red;
+}
+
 .next {
     grid-row: nxt;
     border: 2px solid yellow;
+}
+
+.next:hover{
+    border: 2px solid #0091FF;   
+    cursor: pointer;
 }
 
 .bt-inactive {
@@ -226,6 +237,7 @@ button {
     background-color: #FFD23A;
     border: 3px solid #FFD23A;
     color: #010101;
+    cursor: pointer;
 }
 
 p {
