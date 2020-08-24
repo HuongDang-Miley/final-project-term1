@@ -1,7 +1,7 @@
 // correct answer is at first index
 const questions =  [
     {
-        question: "You're 3rd place right now in a race. What place are you in?",
+        "question": "You're 3rd place right now in a race. What place are you in?",
         answer: ["1st", "2nd", "3rd", "None"]
     },
     {
@@ -18,3 +18,4 @@ const questions =  [
 ]
 
 
+const prizeArr = [1000000000, 500000, 125000, 65000, 32000, 16000, 8000, 4000, 2000, 1000, 500, 300, 200, 100, 50]
