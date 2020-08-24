@@ -10,7 +10,7 @@ body {
 #main {
     width: 70%;
     height: 100%;
-    margin: 50px auto;
+    margin: 40px auto;
 }
 
 #question-part {
@@ -75,7 +75,7 @@ body {
 
 .music-wrapper{
     grid-area: mus;
-    width: 144px;
+    width: 140px;
     justify-self: start;
 
 }
@@ -112,7 +112,7 @@ ol {
 }
 
 #wrapper {
-    width: 340px;
+    /* width: 340px; */
     grid-area: ind;
     display: grid;
     grid-template-areas: "time" "hint";
@@ -245,10 +245,10 @@ p {
     margin-bottom: 32px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 644px) {
     #main {
         width: 100%;
-        margin: 0px auto;
+        margin: 12px auto;
     }
     #question-part {
         display: grid;
@@ -285,7 +285,7 @@ p {
         margin: 0px 0px 8px 0px;
     }
     #indicator-part {
-        margin: 32px 0px 8px 0px;
+        margin: 0px 0px 8px 0px;
         display: grid;
         grid-template-areas: "mus mon" "ind mon";
         justify-items: center;
@@ -352,8 +352,14 @@ p {
     }
 }
 
-@media (min-width: 601px) and (max-width: 800px) {
+@media (min-width: 645px) and (max-width: 800px) {
     #main {
         width: 100%;
+    }
+}
+
+@media(min-width: 801px) {
+    #main{
+        width:90%;
     }
 }
