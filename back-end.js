@@ -32,31 +32,30 @@ const loadQuestion = function (currentQuestion) {
     document.querySelector('#answer-c').innerText = shuffledAnswerArr[2]
     document.querySelector('#answer-d').innerText = shuffledAnswerArr[3]
     // put music according to number of question passed.
-    if ( 10 < totalQuestionLeft&& totalQuestionLeft <= 15) {
+    if (10 < totalQuestionLeft && totalQuestionLeft <= 15) {
         document.querySelector('iframe').src = './music/50-1.000-music.mp3'
     }
-    else if ( 5 <= totalQuestionLeft && totalQuestionLeft <= 10) {
+    else if (5 <= totalQuestionLeft && totalQuestionLeft <= 10) {
         document.querySelector('iframe').src = './music/2.000-32.000-music.mp3'
     }
-    else if (3 <= totalQuestionLeft && totalQuestionLeft  <= 4) {
+    else if (3 <= totalQuestionLeft && totalQuestionLeft <= 4) {
         document.querySelector('iframe').src = './music/65.000-125.000-music.mp3'
     }
-    else if (totalQuestionLeft === 2) {   
-            document.querySelector('iframe').src = './music/500.000-music.mp3'
-    } 
-    else if (totalQuestionLeft === 1) {   
+    else if (totalQuestionLeft === 2) {
+        document.querySelector('iframe').src = './music/500.000-music.mp3'
+    }
+    else if (totalQuestionLeft === 1) {
         document.querySelector('iframe').src = './music/1.000.000-music.mp3'
-} 
+    }
 }
 
-loadQuestion(currentQuestion)
+
+loadQuestion(currentQuestion);
 
 // When user Click: 1. show clicked option, 2/ show correct answer, 3/ show prize earn or game end
 
 const prizeList = document.querySelectorAll('li')
 const choices = document.querySelectorAll('.choice')
-
-
 
 
 // Run through choice of answers. If user click on any of them, add a class to change the button.
@@ -72,10 +71,10 @@ choices.forEach(function (choice) {
                 // Update number of passed questions and add border to new money tier, delete border of old money tier. 
                 if (totalQuestionLeft !== 15) {
                     prizeList[totalQuestionLeft].classList.remove('pass-question')
-                    totalQuestionLeft --
+                    totalQuestionLeft--
                     prizeList[totalQuestionLeft].classList.add('pass-question')
                 } else {
-                    totalQuestionLeft --
+                    totalQuestionLeft--
                     prizeList[totalQuestionLeft].classList.add('pass-question')
                 }
                 // Update current prize
@@ -108,10 +107,13 @@ choices.forEach(function (choice) {
                 document.querySelector('#answer-d').classList.add('deactivate-btn')
                 // Activate next button
                 document.querySelector('.next').classList.remove('deactivate-btn')
+                
                 // Check current prize
                 console.log({ currentPrize })
                 console.log({ totalQuestionLeft })
             }, 1000)
+            // Show pop up
+            gameOver();
         }
     })
 })
@@ -143,7 +145,48 @@ function loadNewQuestion() {
 
 }
 
+//GAME OVER SCENARIO
 
+const gameOver = function () {
+    document.querySelector("#popup-wrapper").style.display = "block"
+    // document.querySelector("#popup-wrapper").style.opacity = "0.8"
+    if (totalQuestionLeft <= 10) {
+        document.querySelector('#popup-text').innerText = `Congratulation!\n You still won ${prizeList[10]}`
+    } 
+    else if (totalQuestionLeft <= 5) {
+        document.querySelector('#popup-text').innerText = `Congratulation!\n You still Won $ ${prizeList[5]}` 
+    } 
+    else {
+        document.querySelector('#popup-text').innerText = `Good Luck Next Time!`
+    }
+}
+
+// USER ACTIVELY QUIT
+
+document.querySelector('.quit').addEventListener('click', function () {
+    gameOver();
+    if (totalQuestionLeft === 15) {
+        document.querySelector('#popup-text').innerText = `Good Luck Next Time!`
+    } else {
+        document.querySelector('#popup-text').innerText = `Congratulation!\nYou Won $ ${currentPrize}`
+    }
+})
+
+
+
+// USER CLICK PLAY AGAIN
+
+document.querySelector('.play-again').addEventListener('click', function (event) {
+    // Hide popup
+    document.querySelector('#popup-wrapper').style.display = 'none'
+    // Reset all variable
+    totalQuestionLeft = 15
+    currentPrize = 0
+    currentQuestion = 0
+    correctAnswer = questions[currentQuestion].answers[0]
+    // Load first question again
+    loadQuestion(currentQuestion);
+})
 
 console.log({ currentQuestion })
 console.log({ correctAnswer })
@@ -156,25 +199,6 @@ console.log({ currentPrize })
 
 
 
-    // const correctAnswer = questions[0].answer[0]
-
-
-// Get right answer by index 0
-// const shuffledAnswerArr = shuffle(questions[0].answer)
-
-// function getCorrectAnswer(ans) {
-//     if (ans === correctAnswer) {
-//         return true
-//     } else {
-//         return false  
-//     }
-// }
-
-
-
-
-
-// Helper function
 
 
 
