@@ -28,6 +28,13 @@ const hidePopup = function () {
     // document.querySelector('#popup').style.opacity = '100'
 }
 
+const deActivateAllButton = function () {
+    document.querySelector('#answer-a').classList.add('deactivate-btn')
+    document.querySelector('#answer-b').classList.add('deactivate-btn')
+    document.querySelector('#answer-c').classList.add('deactivate-btn')
+    document.querySelector('#answer-d').classList.add('deactivate-btn')
+}
+
 
 //Create a new array from the original arr, shuffle it
 function shuffle(a) {
@@ -124,40 +131,44 @@ choices.forEach(function (choice) {
                 currentPrize = prizeArr[totalQuestionLeft]
                 console.log({ currentPrize })
                 // Deactivate all button
-                document.querySelector('#answer-a').classList.add('deactivate-btn')
-                document.querySelector('#answer-b').classList.add('deactivate-btn')
-                document.querySelector('#answer-c').classList.add('deactivate-btn')
-                document.querySelector('#answer-d').classList.add('deactivate-btn')
-                document.querySelector('.fifty-fifty').classList.add("deactivate-btn") 
+                deActivateAllButton()
+                document.querySelector('.fifty-fifty').classList.add("deactivate-btn")
+
 
                 // Activate next button
                 document.querySelector('.next').classList.remove('deactivate-btn')
             }, 1000)
         }
         else {
-            setTimeout(function () {
-                // Loop through all choice elements, if a choice has innerText that match correct answer, add class show-correct-answer to it
-                for (const choice of choices) {
-                    if (choice.innerText === correctAnswer) {
-                        choice.classList.add('show-correct-answer')
+            // setTimeout(function () {
+                const showResultAfterWrongAnswerSelected = function() {
+                    // Loop through all choice elements, if a choice has innerText that match correct answer, add class show-correct-answer to it
+                    for (const choice of choices) {
+                        if (choice.innerText === correctAnswer) {
+                            choice.classList.add('show-correct-answer')
+                        }
                     }
+                    // turn on correct-answer music
+                    document.querySelector('iframe').src = './music/wrong-answer.mp3'
+                    // deactivate all buttons
+                    deActivateAllButton()
+                    // Activate next button
+                    document.querySelector('.next').classList.remove('deactivate-btn')
+                    // Check current prize
+                    console.log({ currentPrize })
+                    console.log({ totalQuestionLeft })
                 }
-                // turn on correct-answer music
-                document.querySelector('iframe').src = './music/wrong-answer.mp3'
-                // deactivate all buttons
-                document.querySelector('#answer-a').classList.add('deactivate-btn')
-                document.querySelector('#answer-b').classList.add('deactivate-btn')
-                document.querySelector('#answer-c').classList.add('deactivate-btn')
-                document.querySelector('#answer-d').classList.add('deactivate-btn')
-                // Activate next button
-                document.querySelector('.next').classList.remove('deactivate-btn')
 
-                // Check current prize
-                console.log({ currentPrize })
-                console.log({ totalQuestionLeft })
-            }, 700)
+                setTimeout(function(){
+                    showResultAfterWrongAnswerSelected()
+                    gameOver()
+                }, 700)
+
+                // setTimeout(showResultAfterWrongAnswerSelected(),500) 
+                // setTimeout(gameOver(),6000)
+            // }, 1000)
             // Show pop up
-            setTimeout(gameOver(), 700)
+            // setTimeout(gameOver(), 700)
         }
     })
 })
@@ -178,7 +189,7 @@ function loadNewQuestion() {
     console.log({ currentPrize })
     if (hintCount > 0) {
         document.querySelector(".fifty-fifty").classList.remove("deactivate-btn")
-        document.querySelector('.three-times').classList.remove(".deactivate-hint-count")           
+        document.querySelector('.three-times').classList.remove(".deactivate-hint-count")
     }
     // load game again pass in new current question number
     loadQuestion(currentQuestion)
@@ -196,7 +207,8 @@ function loadNewQuestion() {
 
 const gameOver = function () {
     // Display popup
-    // setTimeout(showPopup(), 5000)
+    setTimeout(showPopup(), 1000)
+    // showPopup()
 
     // Show text according to how many question left
     if (totalQuestionLeft <= 10) {
@@ -259,18 +271,18 @@ const fiftyFifty = function () {
 
 let hintCount = 3
 
-document.querySelector('.fifty-fifty').addEventListener('click', function() {
+document.querySelector('.fifty-fifty').addEventListener('click', function () {
     fiftyFifty()
-        if (hintCount >0) {
-            hintCount--  
-            document.querySelector('.three-times').innerText = `x${hintCount}`
-            document.querySelector('.fifty-fifty').classList.add("deactivate-btn")           
-            document.querySelector('.three-times').classList.add(".deactivate-hint-count")           
-        } else {
-            document.querySelector('.three-times').innerText = ''
-            document.querySelector('.fifty-fifty').classList.add("deactivate-btn")
-            document.querySelector('.three-times').classList.add(".deactivate-hint-count")           
-        }
+    if (hintCount > 0) {
+        hintCount--
+        document.querySelector('.three-times').innerText = `x${hintCount}`
+        document.querySelector('.fifty-fifty').classList.add("deactivate-btn")
+        document.querySelector('.three-times').classList.add(".deactivate-hint-count")
+    } else {
+        document.querySelector('.three-times').innerText = ''
+        document.querySelector('.fifty-fifty').classList.add("deactivate-btn")
+        document.querySelector('.three-times').classList.add(".deactivate-hint-count")
+    }
 })
 
 

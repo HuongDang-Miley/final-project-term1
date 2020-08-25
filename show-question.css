@@ -1,3 +1,6 @@
+@-webkit-keyframes blink { 50% { border-color:yellow; }  }
+
+
 body {
     font-family: 'Inter', sans-serif;
     background-image: url(./assets/game-background.jpg);
@@ -26,7 +29,7 @@ body {
     border-radius: 100px;
     border: 3px solid #979797;
     background-color: #010101;
-    font-size: 24px;
+    font-size: 1.2rem;
 }
 
 .choice {
@@ -39,19 +42,19 @@ body {
 }
 
 .choice-clicked {
-    background-color: yellow;
+    background-color: #FFD23A;
     color: black;
-    border: #A47F01 solid 3px;
+    border: #A47F01 solid 2px;
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .show-correct-answer {
     font-weight: 600;
-    font-size: 1.5rem;
-    background-color: greenyellow;
+    font-size: 1.2rem;
+    background-color: #9ADD45;
     color: black;
-    border:#FFD23A solid 3px;
+    border:#FFD23A solid 2px;
 }
 
 .deactivate-btn {
@@ -97,10 +100,10 @@ body {
     margin: 8px 0px 0px 8px;
 }
 
-.answer-option {
+/* .answer-option {
     color: #FFD23A;
     font-size: 500;
-}
+} */
 
 #indicator-part {
     /* background-color: grey; */
@@ -223,7 +226,9 @@ ol {
 .next {
     grid-row: nxt;
     border: 2px solid yellow;
+    -webkit-animation: blink .5s step-end infinite alternate; 
 }
+
 
 .next:hover{
     border: 2px solid #0091FF;   
@@ -241,10 +246,12 @@ ol {
     left: 0px;
     right: 0px;
     bottom: 0px;
-    width: 0;
+    width: 100%;
     height: 100%;
+    z-index: -1;
     background-color: rgba(0, 0, 0, 0.8);
-    transition: -1s ease-in width ;
+    opacity: 0;
+    transition: 1s;
 }
 
 
@@ -260,12 +267,11 @@ ol {
     justify-items: center;
     padding: 60px 8px 60px 8px;
     opacity: 0;
-    display: none;
-    transition: 1s display;
+    transition: 1s;
 }
 
 button {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     width: 300px;
     height: 56px;
     background: #010101;
@@ -335,19 +341,22 @@ p {
 
     #answer-a {
         grid-area: anA;
-        justify-self: stretch;
+        justify-self: start;
         margin: 0px 0px 8px 0px;
     }
     #answer-b {
         grid-area: anB;
+        justify-self: start;
         margin: 0px 0px 8px 0px;
     }
     #answer-c {
         grid-area: anC;
+        justify-self: start;
         margin: 0px 0px 8px 0px;
     }
     #answer-d {
         grid-area: anD;
+        justify-self: start;
         margin: 0px 0px 8px 0px;
     }
     #indicator-part {

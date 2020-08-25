@@ -1,6 +1,6 @@
 body {
     background-image: url("./assets/game-background.jpg");
-    background-position: center; 
+    background-position: center;
     background-size: 100% 100%;
     background-size: cover;
     font-family: 'Inter', sans-serif;
@@ -10,7 +10,7 @@ body {
 #background {
     display: grid;
     grid-template-columns: 1ft;
-    justify-items: center ;
+    justify-items: center;
 }
 
 img {
@@ -18,21 +18,21 @@ img {
     margin: 24px;
 }
 
-button {
-    font-size: 24px;
+#start-btn {
     width: 300px;
-    height: 56px;
+    height: 60px;
     margin: 16px;
     background: #010101;
     border: 3px solid #979797;
-    border-radius: 28px;
+    border-radius: 30px;
     color: #FFD23A;
+    font-size: 1.5rem;
 }
 
-button:hover {
+#start-btn:hover {
+    color: #010101;
     background-color: #FFD23A;
     border: 3px solid #FFD23A;
-    color: #010101;
 }
 
 input {
@@ -62,9 +62,11 @@ iframe {
 .screen-wrapper {
     display: grid;
     grid-template-columns: 1ft;
-    justify-items: center;;
+    justify-items: center;
+    ;
     margin-top: 50px;
 }
+
 .black-box-wrapper {
     padding: 10px;
     background-color: #010101;
@@ -87,10 +89,10 @@ p, li {
     font-weight: 600px;
 }
 
-
 .rank-1 {
     color: yellow;
 }
+
 .rank-2 {
     color: white;
 }
