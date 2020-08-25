@@ -14,11 +14,13 @@ function shuffle(a) {
 
 // MAIN FUNCTIONS
 
+let totalQuestionLeft = 15
+let currentPrize = 0
 let currentQuestion = 0
-// const correctAnswer = questions[currentQuestion].answers[0]
+let correctAnswer = questions[currentQuestion].answers[0]
 
 //load question when game start
-const startGame = function (currentQuestion) {
+const loadQuestion = function (currentQuestion) {
     const objQuest = questions[currentQuestion]
     // print question to question field
     const printQuest = objQuest.question
@@ -29,91 +31,150 @@ const startGame = function (currentQuestion) {
     document.querySelector('#answer-b').innerText = shuffledAnswerArr[1]
     document.querySelector('#answer-c').innerText = shuffledAnswerArr[2]
     document.querySelector('#answer-d').innerText = shuffledAnswerArr[3]
+    // put music according to number of question passed.
+    if ( 10 < totalQuestionLeft&& totalQuestionLeft <= 15) {
+        document.querySelector('iframe').src = './music/50-1.000-music.mp3'
+    }
+    else if ( 5 <= totalQuestionLeft && totalQuestionLeft <= 10) {
+        document.querySelector('iframe').src = './music/2.000-32.000-music.mp3'
+    }
+    else if (3 <= totalQuestionLeft && totalQuestionLeft  <= 4) {
+        document.querySelector('iframe').src = './music/65.000-125.000-music.mp3'
+    }
+    else if (totalQuestionLeft === 2) {   
+            document.querySelector('iframe').src = './music/500.000-music.mp3'
+    } 
+    else if (totalQuestionLeft === 1) {   
+        document.querySelector('iframe').src = './music/1.000.000-music.mp3'
+} 
 }
 
-startGame(currentQuestion)
+loadQuestion(currentQuestion)
 
-// // When user Click: 1. show clicked option, 2/ show correct answer, 3/ show prize earn or game end
+// When user Click: 1. show clicked option, 2/ show correct answer, 3/ show prize earn or game end
 
-// const prizeList = document.querySelectorAll('li')
-// const choices = document.querySelectorAll('.choice')
-
-// let totalQuestionPass = 15
-// let currentPrize = 0
-
-
-// // Run through choice of answers. If user click on any of them, add a class to change the button.
-// choices.forEach(function (choice) {
-//     choice.addEventListener('click', function (event) {
-//         event.target.classList.add("choice-clicked")
-//         if (event.target.innerText === correctAnswer) {
-//             setTimeout(function () {
-//                 // show correct answer in green
-//                 event.target.classList.replace("choice-clicked", "show-correct-answer")
-//                 // turn on correct-answer music
-//                 document.querySelector('iframe').src = './music/correct-answer.mp3'
-//                 // Update number of passed questions and add border to money tier
-//                 totalQuestionPass = totalQuestionPass - 1
-//                 console.log({ totalQuestionPass })
-//                 prizeList[totalQuestionPass].classList.add('pass-question')
-//                 // Update current prize
-//                 currentPrize = prizeArr[totalQuestionPass]
-//                 console.log({ currentPrize })
-//                 // Deactivate all button
-//                 document.querySelector('#answer-a').classList.add('deactivate-btn')
-//                 document.querySelector('#answer-b').classList.add('deactivate-btn')
-//                 document.querySelector('#answer-c').classList.add('deactivate-btn')
-//                 document.querySelector('#answer-d').classList.add('deactivate-btn')
-//             }, 1000)
-//         }
-
-//         else {
-//             setTimeout(function () {
-//                 // show correct answer in green
-//                 document.querySelector('.correct-answer').classList.add('show-correct-answer')
-//                 // turn on correct-answer music
-//                 document.querySelector('iframe').src = './music/wrong-answer.mp3'
-//                 // deactivate all buttons
-//                 document.querySelector('#answer-a').classList.add('deactivate-btn')
-//                 document.querySelector('#answer-b').classList.add('deactivate-btn')
-//                 document.querySelector('#answer-c').classList.add('deactivate-btn')
-//                 document.querySelector('#answer-d').classList.add('deactivate-btn')
-//                 // Check current prize
-//                 console.log({ currentPrize })
-//                 console.log({ questionPass })
-//             }, 1000)
-//         }
-//     })
-// })
-
-
-
-// // console.log({ prize })
-// // console.log({ questionPass })
+const prizeList = document.querySelectorAll('li')
+const choices = document.querySelectorAll('.choice')
 
 
 
 
+// Run through choice of answers. If user click on any of them, add a class to change the button.
+choices.forEach(function (choice) {
+    choice.addEventListener('click', function (event) {
+        event.target.classList.add("choice-clicked")
+        if (event.target.innerText === correctAnswer) {
+            setTimeout(function () {
+                // show correct answer in green
+                event.target.classList.replace("choice-clicked", "show-correct-answer")
+                // turn on correct-answer music
+                document.querySelector('iframe').src = './music/correct-answer.mp3'
+                // Update number of passed questions and add border to new money tier, delete border of old money tier. 
+                if (totalQuestionLeft !== 15) {
+                    prizeList[totalQuestionLeft].classList.remove('pass-question')
+                    totalQuestionLeft --
+                    prizeList[totalQuestionLeft].classList.add('pass-question')
+                } else {
+                    totalQuestionLeft --
+                    prizeList[totalQuestionLeft].classList.add('pass-question')
+                }
+                // Update current prize
+                currentPrize = prizeArr[totalQuestionLeft]
+                console.log({ currentPrize })
+                // Deactivate all button
+                document.querySelector('#answer-a').classList.add('deactivate-btn')
+                document.querySelector('#answer-b').classList.add('deactivate-btn')
+                document.querySelector('#answer-c').classList.add('deactivate-btn')
+                document.querySelector('#answer-d').classList.add('deactivate-btn')
 
-//     // const correctAnswer = questions[0].answer[0]
+                // Activate next button
+                document.querySelector('.next').classList.remove('deactivate-btn')
+            }, 1000)
+        }
+        else {
+            setTimeout(function () {
+                // Loop through all choice elements, if a choice has innerText that match correct answer, add class show-correct-answer to it
+                for (const choice of choices) {
+                    if (choice.innerText === correctAnswer) {
+                        choice.classList.add('show-correct-answer')
+                    }
+                }
+                // turn on correct-answer music
+                document.querySelector('iframe').src = './music/wrong-answer.mp3'
+                // deactivate all buttons
+                document.querySelector('#answer-a').classList.add('deactivate-btn')
+                document.querySelector('#answer-b').classList.add('deactivate-btn')
+                document.querySelector('#answer-c').classList.add('deactivate-btn')
+                document.querySelector('#answer-d').classList.add('deactivate-btn')
+                // Activate next button
+                document.querySelector('.next').classList.remove('deactivate-btn')
+                // Check current prize
+                console.log({ currentPrize })
+                console.log({ totalQuestionLeft })
+            }, 1000)
+        }
+    })
+})
 
 
-// // Get right answer by index 0
-// // const shuffledAnswerArr = shuffle(questions[0].answer)
+// Add an event listener to the next button, so that it load the next question
 
-// // function getCorrectAnswer(ans) {
-// //     if (ans === correctAnswer) {
-// //         return true
-// //     } else {
-// //         return false  
-// //     }
-// // }
+const nextBtn = document.querySelector('.next')
+nextBtn.addEventListener('click', loadNewQuestion)
+
+function loadNewQuestion() {
+    // update current question by 1
+    currentQuestion++
+    correctAnswer = questions[currentQuestion].answers[0]
+    console.log({ currentQuestion })
+    console.log({ correctAnswer })
+    console.log({ totalQuestionLeft })
+    console.log({ currentPrize })
+
+    // load game again pass in new current question number
+    loadQuestion(currentQuestion)
+    // deactivate next button again
+    document.querySelector('.next').classList.add('deactivate-btn')
+    // reset all button to default
+    document.querySelector('#answer-a').classList.remove("deactivate-btn", "choice-clicked", "show-correct-answer")
+    document.querySelector('#answer-b').classList.remove("deactivate-btn", "choice-clicked", "show-correct-answer")
+    document.querySelector('#answer-c').classList.remove("deactivate-btn", "choice-clicked", "show-correct-answer")
+    document.querySelector('#answer-d').classList.remove("deactivate-btn", "choice-clicked", "show-correct-answer")
+
+}
+
+
+
+console.log({ currentQuestion })
+console.log({ correctAnswer })
+console.log({ totalQuestionLeft })
+console.log({ currentPrize })
 
 
 
 
 
-// // Helper function
+
+
+    // const correctAnswer = questions[0].answer[0]
+
+
+// Get right answer by index 0
+// const shuffledAnswerArr = shuffle(questions[0].answer)
+
+// function getCorrectAnswer(ans) {
+//     if (ans === correctAnswer) {
+//         return true
+//     } else {
+//         return false  
+//     }
+// }
+
+
+
+
+
+// Helper function
 
 
 
