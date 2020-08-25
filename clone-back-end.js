@@ -14,9 +14,6 @@ const showPopup = function () {
     document.querySelector('#popup-wrapper').style.zIndex = '1'
     document.querySelector('#popup-wrapper').style.opacity = '100'
     document.querySelector('#popup').style.opacity = '100'
-    // document.querySelector('#popup-wrapper').style.width = '100%'
-    // document.querySelector('#popup').style.display = 'block'
-    // document.querySelector('#popup').style.zIndex = '1'
 }
 
 const hidePopup = function () {
