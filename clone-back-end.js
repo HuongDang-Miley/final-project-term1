@@ -20,9 +20,6 @@ const hidePopup = function () {
     document.querySelector('#popup-wrapper').style.zIndex = '-1'
     document.querySelector('#popup-wrapper').style.opacity = '0'
     document.querySelector('#popup').style.opacity = '0'
-    // document.querySelector('#popup-wrapper').style.width = '0'
-    // document.querySelector('#popup').style.display = 'none'
-    // document.querySelector('#popup').style.opacity = '100'
 }
 
 const deActivateAllButton = function () {
