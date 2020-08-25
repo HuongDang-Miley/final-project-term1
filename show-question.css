@@ -241,12 +241,10 @@ ol {
     left: 0px;
     right: 0px;
     bottom: 0px;
-    width: 100%;
+    width: 0;
     height: 100%;
-    display: none;
-    /* opacity: 0; */
     background-color: rgba(0, 0, 0, 0.8);
-    /* transition: 2s opacity; */
+    transition: -1s ease-in width ;
 }
 
 
@@ -261,6 +259,9 @@ ol {
     grid-template-areas: "par" "rnk" "pla";
     justify-items: center;
     padding: 60px 8px 60px 8px;
+    opacity: 0;
+    display: none;
+    transition: 1s display;
 }
 
 button {

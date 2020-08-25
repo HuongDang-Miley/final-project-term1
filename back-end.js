@@ -1,4 +1,29 @@
 // HELPER FUNCTIONS
+
+// Reset all button
+const resetChoices = function () {
+    document.querySelector('#answer-a').classList.remove("deactivate-btn", "choice-clicked", "show-correct-answer")
+    document.querySelector('#answer-b').classList.remove("deactivate-btn", "choice-clicked", "show-correct-answer")
+    document.querySelector('#answer-c').classList.remove("deactivate-btn", "choice-clicked", "show-correct-answer")
+    document.querySelector('#answer-d').classList.remove("deactivate-btn", "choice-clicked", "show-correct-answer")
+}
+
+// show popup
+
+
+
+const showPopup = function () {
+    document.querySelector('#popup-wrapper').style.width = '100%'
+    document.querySelector('#popup').style.display = 'block'
+    document.querySelector('#popup').style.opacity = '100'
+}
+
+const hidePopup = function () {
+    document.querySelector('#popup-wrapper').style.width = '0'
+    document.querySelector('#popup').style.display = 'none'
+    // document.querySelector('#popup').style.opacity = '100'
+
+}
 //Create a new array from the original arr, shuffle it
 function shuffle(a) {
     let result = [...a]
@@ -14,10 +39,24 @@ function shuffle(a) {
 
 // MAIN FUNCTIONS
 
+let users =[]
 let totalQuestionLeft = 15
 let currentPrize = 0
 let currentQuestion = 0
 let correctAnswer = questions[currentQuestion].answers[0]
+
+// Login
+let name = document.querySelector("#enter-name").value
+
+// create a function that create an user and user's prize
+/* [
+    {
+        user: name,
+        prize: currentPrize
+    },
+] */
+
+const 
 
 //load question when game start
 const loadQuestion = function (currentQuestion) {
@@ -107,13 +146,13 @@ choices.forEach(function (choice) {
                 document.querySelector('#answer-d').classList.add('deactivate-btn')
                 // Activate next button
                 document.querySelector('.next').classList.remove('deactivate-btn')
-                
+
                 // Check current prize
                 console.log({ currentPrize })
                 console.log({ totalQuestionLeft })
-            }, 1000)
+            }, 700)
             // Show pop up
-            gameOver();
+            setTimeout(gameOver(), 700)
         }
     })
 })
@@ -148,28 +187,34 @@ function loadNewQuestion() {
 //GAME OVER SCENARIO
 
 const gameOver = function () {
-    document.querySelector("#popup-wrapper").style.display = "block"
-    // document.querySelector("#popup-wrapper").style.opacity = "0.8"
+
+
+
+    // Show text according to how many question left
     if (totalQuestionLeft <= 10) {
         document.querySelector('#popup-text').innerText = `Congratulation!\n You still won ${prizeList[10]}`
-    } 
+    }
     else if (totalQuestionLeft <= 5) {
-        document.querySelector('#popup-text').innerText = `Congratulation!\n You still Won $ ${prizeList[5]}` 
-    } 
+        document.querySelector('#popup-text').innerText = `Congratulation!\n You still Won $ ${prizeList[5]}`
+    }
     else {
         document.querySelector('#popup-text').innerText = `Good Luck Next Time!`
     }
+
+    // Display popup
+    setTimeout(showPopup(), 500)
 }
 
 // USER ACTIVELY QUIT
 
 document.querySelector('.quit').addEventListener('click', function () {
-    gameOver();
     if (totalQuestionLeft === 15) {
         document.querySelector('#popup-text').innerText = `Good Luck Next Time!`
     } else {
         document.querySelector('#popup-text').innerText = `Congratulation!\nYou Won $ ${currentPrize}`
     }
+    // Display popup
+    setTimeout(showPopup(), 500)
 })
 
 
@@ -178,15 +223,19 @@ document.querySelector('.quit').addEventListener('click', function () {
 
 document.querySelector('.play-again').addEventListener('click', function (event) {
     // Hide popup
-    document.querySelector('#popup-wrapper').style.display = 'none'
+    hidePopup();
     // Reset all variable
     totalQuestionLeft = 15
     currentPrize = 0
     currentQuestion = 0
     correctAnswer = questions[currentQuestion].answers[0]
+    // Reset all choices
+    resetChoices()
     // Load first question again
     loadQuestion(currentQuestion);
 })
+
+
 
 console.log({ currentQuestion })
 console.log({ correctAnswer })
